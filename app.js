@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var product = require('./routes/product');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
+var order = require('./routes/order');
 
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','hjs');
@@ -47,6 +48,7 @@ app.use('/',routes);
 app.use('/product',product);
 app.use('/login',login);
 app.use('/logout',logout);
+app.use('/order',order);
 
 
 app.use(function(err,req,res,next){

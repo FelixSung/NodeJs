@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/custom.css' />
+    <script src="/javascripts/jquery-2.0.3.min.js"></script>
+    <script src="/javascripts/jquery.formExt.js"></script>
+    <script src="/javascripts/knockout-3.2.0.js"></script>
+    <title>{{title}}</title>
+</head>
+<body>
+<div class="box">
+    <h2>{{userName}}的所购订单的产品列表</h2>
+</div>
+<div class="box">
+    <ul id="ulProducts" class="list">
+        {{#products}}
+        <li>
+            <div>
+                <img src="{{image}}" width="52" />
+                <strong>{{name}}</strong>
+                <span>{{des}}</span>
+            </div>
+        </li>
+        {{/products}}
+    </ul>
+</div>
+
+<br />
+<br />
+<br />
+</body>
+</html>

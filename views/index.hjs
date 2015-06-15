@@ -12,7 +12,7 @@
         {{#noLogin}}<a href='/login'>登录</a>{{/noLogin}}
     </p>
     <p>
-        <a href="/product">产品</a>
+        <a href="/product">产品</a>&nbsp;<a href="/order">订单</a>
     </p>
 </div>
 </body>
