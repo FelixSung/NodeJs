@@ -1,0 +1,39 @@
+/* index */
+.box{
+    width:1190px;
+    margin:0px auto;
+    position: relative;
+}
+.tc {
+    text-align: center;
+}
+ul.list {
+    width: 100%;
+    margin:0px 0px;
+    padding:0px 0px;
+    list-style: none;
+}
+ul.list li{
+    text-align: left;
+    margin:0px 10px 10px 0px;
+    float:left;
+    width: 100%;
+}
+
+/* login */
+.login {
+    width: 400px; margin: 50px auto;
+    text-align: center;
+}
+.login h1{
+
+}
+.login ul{
+    list-style: none;
+}
+.login ul li{
+    margin-bottom: 15px;
+}
+.login ul li span{
+    float:left;
+}

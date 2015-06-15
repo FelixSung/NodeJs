@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/custom.css' />
+    <script src="/javascripts/jquery-2.0.3.min.js"></script>
+</head>
+<body>
+<div class="login">
+    <h1>{{ title }}</h1>
+    <form>
+        <ul>
+            <li><span>用户名：</span><input id="txtUserName" type='text' name='userName' /></li>
+            <li><span>密&nbsp;&nbsp; 码：</span><input id="txtPassword" type='password' name='password' /> </li>
+            <li><input id="btnSubmit" type="button" value="登录"/></li>
+        </ul>
+    </form>
+</div>
+<script>
+    $(function(){
+        $("#btnSubmit").click(function(){
+            var userName = $("#txtUserName").val();
+            var password = $("#txtPassword").val();
+            var data = {userName:userName,password:password};
+            $.ajax({
+                url:"/login",
+                type:"POST",
+                data:data,
+                dataType:"json",
+                success:function(result){
+                    if(result.isSuccess){
+                        location.href = '/';
+                    }
+                    else{
+                        alert(result.errMsg);
+                    }
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

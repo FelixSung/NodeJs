@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/custom.css' />
+    <script src="/javascripts/jquery-2.0.3.min.js"></script>
+    <script src="/javascripts/jquery.formExt.js"></script>
+    <script src="/javascripts/knockout-3.2.0.js"></script>
+    <title>{{title}}</title>
+</head>
+<body>
+<div class="box">
+    <ul id="ulProducts" class="list" data-bind="foreach:products">
+        <li>
+            <div>
+                <img data-bind="attr:{src:image}" width="52" />
+                <strong data-bind="text:name"></strong>
+                <span data-bind="text:des"></span>
+                <button data-bind="click:$root.edit">编辑</button>
+                <button data-bind="click:$root.remove">删除</button>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<br />
+<br />
+<br />
+<div class="box" style=" width:500px;">
+    <form id="form" method="post">
+        <input type="hidden" name="id"  />
+        <ul class="list">
+            <li>名称：<input type="text" name="name" style="width: 90%;" /></li>
+            <li>图片：<input type="text" name="image"  style="width: 90%;"/></li>
+            <li>描述：<input type="text" name="des" style="width: 90%;" /></li>
+            <li>
+                <button data-bind="click:save" style="float:left; margin-left:20px;" />保存</button>
+                <button data-bind="click:clear" style=" margin-left:220px;float:left;">清除</button>
+            </li>
+        </ul>
+    </form>
+</div>
+<script>
+    var ViewModel = function(){
+        var self = this;
+        self.products = ko.observableArray();
+        self.edit = function(item){
+            $("#form").loadForm(item);
+        };
+        self.clear = function(){
+            $("#form input").val("");
+        }
+        self.save = function(){
+            var data = $("#form").toJson();
+            $.post("/product/save",data,function(result){
+                if(result){
+                    self.bindData();
+                }
+            },"json");
+        };
+        self.remove = function(item){
+            $.post("/product/delete",{id:item.id},function(result){
+                if(result){
+                    self.bindData();
+                }
+            },"json");
+        }
+        self.bindData = function(){
+            $.getJSON('/product/list',function(result){
+                if(result.isSuccess)
+                    self.products(result.data);
+                else{
+                    alert(result.errMsg);
+                }
+            });
+        };
+    };
+    var viewModel = new ViewModel();
+    ko.applyBindings(viewModel);
+    $(function () {
+        viewModel.bindData();
+    })
+</script>
+</body>
+</html>
