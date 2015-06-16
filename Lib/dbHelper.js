@@ -1,10 +1,3 @@
-/**
- * Created by songfei on 15/6/15.
- */
-/**
- * Created by FelixSung on 2015/6/10.
- */
-
 var mssql = require('mssql');
 
 //Create Connection Config
@@ -23,7 +16,7 @@ exports.query = function(sql,callback){
         if(!err)
         {
             var request = new mssql.Request(connection);
-            console.log(sql);
+            //console.log(sql);
             request.query(sql,callback);
         }
         else
