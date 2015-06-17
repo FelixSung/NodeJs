@@ -1,5 +1,5 @@
 var should = require('should');
-var dbHelper = require('./../biz/dbHelper');
+var dbHelper = require('./../lib/dbHelper');
 
 var getArray = function(){
     return [1,2];
