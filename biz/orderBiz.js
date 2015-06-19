@@ -3,7 +3,7 @@
  */
 
 var q = require('Q');
-var dbHelper = require('./../Lib/dbHelper');
+var dbHelper = require('././dbHelper');
 
 exports.getUser = function(name){
     var defered = q.defer();

@@ -4,7 +4,7 @@
 var express = require('express');
 var router = express.Router();
 
-var dbHelper = require('../lib/dbHelper');
+var dbHelper = require('./dbHelper');
 
 /* GET product page. */
 router.get('/', function(req, res) {

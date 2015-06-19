@@ -1,5 +1,5 @@
 var should = require('should');
-var dbHelper = require('./../lib/dbHelper');
+var dbHelper = require('././dbHelper');
 
 var getArray = function(){
     return [1,2];
@@ -27,7 +27,7 @@ var getString = function(){
 describe('Test DbHelper Functions', function () {
     var sql1 = "select * from Users";
     var sql2 = "select * from Users where name='admin'";
-    it('Should has more values',function(done){
+    it.skip('Should has more values',function(done){
         dbHelper.query(sql1,function(err,recordSet){
             if(err) throw err;
             should(recordSet).ok;
@@ -41,4 +41,10 @@ describe('Test DbHelper Functions', function () {
             done();
         });
     });
+
+    it.skip('Case 1',function(){
+        throw new AssertionError({
+
+        });
+    })
 })
